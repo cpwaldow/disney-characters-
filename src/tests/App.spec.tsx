@@ -1,6 +1,6 @@
-import { vi } from 'vitest'; // mocks
-import { render, screen } from '@testing-library/react'; // padrão de teste de componente
-import App from '../App'; // componente
+import { vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import App from '../App';
 import { mockApiResponse } from './mocks/mockApi';
 
 describe('Expect App render correctly', () => {
@@ -27,5 +27,12 @@ describe('Expect App render correctly', () => {
     );
     expect(mockFetch).toHaveBeenCalledTimes(1);
     expect(resultTextElement).toBeInTheDocument();
+  });
+  test('Render App and set api data to storage', () => {
+    render(<App />);
+    expect(localStorage).toHaveProperty('storeDisneyData');
+    expect(JSON.parse(localStorage.storeDisneyData)).toStrictEqual(
+      mockApiResponse,
+    );
   });
 });

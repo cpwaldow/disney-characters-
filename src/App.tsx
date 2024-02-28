@@ -1,12 +1,24 @@
 import { useEffect, useState } from 'react';
 import { fetchDisneyApi } from './services/fetchAPi';
 import { FetchDisneyApiType } from './types';
+import { storageSetData, storeGetData } from './services/storage';
 import './App.css';
 
 function App() {
   const [apiData, setApiData] = useState<FetchDisneyApiType>();
+
   useEffect(() => {
-    (async () => setApiData(await fetchDisneyApi()))();
+    const handleFetch = async () => {
+      const data = await fetchDisneyApi();
+      setApiData(data);
+      storageSetData(data);
+    };
+    if (localStorage.storeDisneyData) {
+      const storageApiData = storeGetData();
+      setApiData(storageApiData);
+    } else {
+      handleFetch();
+    }
   }, []);
 
   return (
