@@ -3,6 +3,7 @@ import { fetchDisneyApi } from './services/fetchAPi';
 import { FetchDisneyApiType } from './types';
 import { storageSetData, storeGetData } from './services/storage';
 import './App.css';
+import CharacterCard from './components/CharacterCard';
 
 function App() {
   const [apiData, setApiData] = useState<FetchDisneyApiType>();
@@ -20,11 +21,17 @@ function App() {
       handleFetch();
     }
   }, []);
+  console.log(apiData?.data);
 
   return (
     <>
       <h1>Bem-vindos ao maravilhoso mundo Disney</h1>
       <p>{apiData?.data.length} resultados exibidos</p>
+      <section className='character__container'>
+        {apiData?.data.map((item) => (
+          <CharacterCard characterInfo={item} key={item.name} />
+        ))}
+      </section>
     </>
   );
 }
