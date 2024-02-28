@@ -2,10 +2,10 @@ export type FetchDisneyApiType = {
   data: {
     createdAt: string;
     films: string[];
-    imageUrl: string;
+    imageUrl?: string;
     name: string;
-    parkAttractions: [];
-    shortFilms: [];
+    parkAttractions: any;
+    shortFilms: never[];
     sourceUrl: string;
     tvShows: string[];
     updatedAt: string;
@@ -21,3 +21,4 @@ export type FetchDisneyApiType = {
     totalPages: number;
   };
 };
+//
