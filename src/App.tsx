@@ -4,15 +4,15 @@ import { FetchDisneyApiType } from './types';
 import './App.css';
 
 function App() {
-  const [apiData, setApiData] = useState<FetchDisneyApiType | undefined>();
+  const [apiData, setApiData] = useState<FetchDisneyApiType>();
   useEffect(() => {
     (async () => setApiData(await fetchDisneyApi()))();
   }, []);
-  console.log(apiData);
 
   return (
     <>
       <h1>Bem-vindos ao maravilhoso mundo Disney</h1>
+      <p>{apiData?.data.length} resultados exibidos</p>
     </>
   );
 }
