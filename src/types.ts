@@ -4,7 +4,7 @@ export type FetchDisneyApiType = {
     films: string[];
     imageUrl?: string;
     name: string;
-    parkAttractions: any;
+    parkAttractions: string[];
     shortFilms: never[];
     sourceUrl: string;
     tvShows: string[];
