@@ -18,7 +18,7 @@ describe('Expect App render correctly', () => {
 
     const mockFetch = vi
       .spyOn(global, 'fetch')
-      .mockResolvedValue(MOCK_RESPONSE);
+      .mockResolvedValueOnce(MOCK_RESPONSE);
 
     render(<App />);
 
