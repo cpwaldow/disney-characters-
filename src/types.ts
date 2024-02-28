@@ -13,7 +13,7 @@ export type FetchDisneyApiType = {
     videoGames: string[];
     __v: number;
     _id: number;
-  };
+  }[];
   info: {
     count: number;
     nextPage: string;
